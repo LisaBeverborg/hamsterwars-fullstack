@@ -1,0 +1,37 @@
+.form-group {
+    font-family: 'Roboto';
+    font-size: 1.2em;
+    margin-bottom: 3em;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9em;
+    margin-top: 30px; 
+}
+
+.form-group input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.9em;  
+}
+
+input.valid {
+    border: 3px solid #0c297e;
+    border-radius: 2px;
+}
+
+input.invalid {
+    border: 3px solid #DD2626;
+    border-radius: 2px;
+}
+
+.error {
+    color: #DD2626;
+    position: absolute;
+}
+
+.registerButton{
+    margin-top: 25px;
+}

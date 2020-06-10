@@ -1,0 +1,50 @@
+.App{
+  font-family: 'Roboto';
+}
+
+.App-header {
+  background-color: #8abaae;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+/*---------------------Navigation---------------------*/
+header nav {
+  background-color: #207567;
+  display: flex;
+  flex-direction: row;
+}
+header nav a {
+  text-decoration: none;
+  color: black ;
+  padding: 0.4em 2em;
+  border:  1px solid gray;
+  flex: 1 1 auto;
+
+}
+header nav a:hover {
+  background-color: gray;
+}
+
+header nav a.active {
+  background-color: white;
+  border-bottom: none;
+}
+
+
+
+main {
+  padding: 1em;
+  background-color: #2e8563;
+  color: white;
+}
+
+footer {
+  background-color: #5ca08e;
+  text-align: center;
+  color: white;
+  padding: 1em;
+}
