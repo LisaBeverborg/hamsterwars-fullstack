@@ -23,20 +23,28 @@ router.post('/', async (req, res) => {
 
 
 // GET all games
+
+
+
+
+
 router.get('/', async (req, res)=>{
-    let allGames = []
-    
-    try{    
-        let data = await db.collection('games').get();
-        data.forEach(el =>{ 
-            allGames.push(el.data());
-        })
-        
-        res.send(allGames)
-        
+
+    try{
+
+        let games =[];
+
+        const fetchGame = await db.collection('games').get();
+
+        fetchGame.forEach(game =>games.push(game.data()))
+
+        res.status(200).send(games);
+
     }catch(err){
-        res.status(500).send(err)
-    }   
+        res.status(500).send(err);
+    }
+
+
 })
 
 module.exports = router;
