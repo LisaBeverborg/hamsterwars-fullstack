@@ -25,14 +25,11 @@ router.post('/', async (req, res) => {
 // GET all games
 
 
-
-
-
 router.get('/', async (req, res)=>{
 
     try{
 
-        let games =[];
+        let games =[]
 
         const fetchGame = await db.collection('games').get();
 
@@ -43,6 +40,26 @@ router.get('/', async (req, res)=>{
     }catch(err){
         res.status(500).send(err);
     }
+
+
+//Get total amount  of games
+    router.get("/total", async (req, res) => {
+        try {
+            let snapShot = await db.collection("games").get();
+            let total = [];
+            
+            snapShot.forEach(doc => {
+                total.push(doc.data());
+            })
+    
+            res.send({totalGames: total.length});
+    
+        }
+        catch(err) {
+            res.status(500).send(err);
+        }
+    })
+
 
 
 })

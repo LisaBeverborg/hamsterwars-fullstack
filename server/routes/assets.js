@@ -1,18 +1,27 @@
 const { Router } = require('express');
 const { storage } = require('./../firebase');
 const router = new Router();
+const fs = require('fs');
 
 // GET hamster image
-router.get('/:filename', async (req,res) => {
-    // Get buffer from storage bucket on firebase
-    console.log('Matchade GET route. Params=', req.params);
-    let pic = await storage.bucket().file(`hamster-pics/${req.params.filename}`).download();
+router.get('/:filename', async (req, res)=>{
+    
+    //console.log(req.params.filename)
+    
+    
+    try{
+        const fetchImg = await storage.bucket()
+        .file(`hamsters-pics/${req.params.filename}`)
+        .download()
+        
+        let pic = Buffer.concat(fetchImg)
+        res.status(200).contentType('jpeg').send(pic) 
+    
+        
+    }catch(err){
+        res.status(500).send(err)
+    }
 
-    // Convert into sendable binary data
-    pic = Buffer.concat(pic);
-
-    // Send ok together with requested file
-    res.status(200).contentType('jpeg').send(pic);
 });
 
 

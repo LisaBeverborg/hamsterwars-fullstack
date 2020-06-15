@@ -4,9 +4,13 @@ const Matchup = () => {
 
 
         return (
-            <div>
-                <p>Matchup</p>
-            </div>
+           
+                <section>
+                        <p>The Battle between "" and "" was won by</p>
+                        <h4>winnerhamster</h4>
+
+                </section>
+        
 
 
         )

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink} from 'react-router-dom';
 
 function App() {
     const [hamster1, setHamster1] = useState(null);
@@ -14,6 +15,15 @@ function App() {
         
     }, [])
     
+
+    let baseUrl;
+    if( process.env.NODE_ENV === 'production' ) {
+        baseUrl = '/';
+    }
+    else { 
+        baseUrl = 'http://localhost:2048/';
+    }
+
     return (
         <div >
         <h1> Battle </h1>
@@ -24,7 +34,7 @@ function App() {
                 <button onClick={() => handleClick(hamster1, hamster2)}>Choose this hamster</button>
                
                 <br/>
-                <img src={`/api/assets/${hamster1.imgName}`} alt={hamster1.imgName}/>
+                <img src={`/assets/${hamster1.imgName}`} alt={hamster1.imgName}/>
                 
                 </>
                 : 'no data'
@@ -37,14 +47,14 @@ function App() {
                 <h2>{hamster2.name}</h2>
                 <button onClick={() => handleClick(hamster2, hamster1)}>Choose this hamster</button>
                 <br/>
-                <img src={`/api/assets/${hamster2.imgName}`} alt={hamster2.imgName}/>
+                <img src={`${baseUrl}/api/assets/${hamster2.imgName}`} alt={hamster2.imgName}/>
                 </>
                 : 'no data'} 
             </section>
             <section>
                 <p>Winner of this battle is: </p>
             </section>
-            <button>New Battle</button>
+            <NavLink to= "/matchup" activeClassName="active"> Matchup </NavLink>
             </div>
             
             )
@@ -59,8 +69,8 @@ function App() {
                 const resp = await fetch('/api/hamsters/random');
                 const json = await resp.json();
                 setState(json);     
-            }catch(err){
-                console.log(err);
+            }catch(e){
+                console.log('Fetch failed because', e );
                 return null;
             }
         }
@@ -74,8 +84,8 @@ function App() {
   //      const resp = await fetch('/api/hamsters/:id');
       //  const json = await resp.json();
        // setState(json);     
-    //}catch(err){
-      //  console.log(err);
+    //}catch(e){
+      //  console.log('Fetch failed because', e );
        // return null;
     //}
 //}

@@ -76,13 +76,13 @@ const Upload = () => {
                     </div>
 
                 </div>
-
-        <div>If you click, "{name}", "{age}", "{food}" and "{loves}" will be added.</div>
+                <p className={name ? "" : "hide"}>{name} will be added to the battle!</p>
                     </form>
 
             </div>
         )
     }
+    //<div>If you click, "{name}", "{age}", "{food}" and "{loves}" will be added.</div>
 
     function isValidName(name) {
         if( String(name) !== '' ) {

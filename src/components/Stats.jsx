@@ -93,8 +93,7 @@ const Stats = ()=>{
                     totalGames
                     ?<article>
                     <h2>Total Games</h2>
-                    <p>{totalGames.games} games were played</p>
-                  <p>  {totalGames.games}</p>
+                    <p>{totalGames.total} games were played</p>
                     </article>
                     : null
                 }
@@ -102,4 +101,4 @@ const Stats = ()=>{
                 </div>
                 )
             }
-    export default Stats;
+            export default Stats;

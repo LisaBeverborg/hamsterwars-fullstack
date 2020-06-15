@@ -3,7 +3,7 @@
 
   const serverPort = process.env.PORT || 2048;
   
-  app.use(express.static('public'))
+  //app.use(express.static('public'))
   app.use(express.static(__dirname + '/../build'))
   app.use(express.json());
   
