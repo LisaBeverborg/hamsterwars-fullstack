@@ -25,8 +25,9 @@ function App() {
    // }
     
     return (
-        <div  className="hamsterBattle">
+        <div>
         <h1> Battle </h1>
+        <div  className="battle">
             <section  className="contestant">
         {hamster1
             ?<>
@@ -56,11 +57,11 @@ function App() {
             : 'no data'} 
             </section>
             <section>
-            <p>Winner of this battle is: </p>
             </section>
+            <p>Winner of this battle is: </p>
+            </div>
             <NavLink to= "/matchup" activeClassName="active"> Matchup </NavLink>
             </div>
-            
             )
             
         }
