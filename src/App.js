@@ -18,7 +18,6 @@ function App() {
             <nav>
                 <Link to= "/start" activeClassName="active"> Start </Link>
                 <NavLink to= "/battle" activeClassName="active"> Battle </NavLink>
-                <NavLink to= "/matchup" activeClassName="active"> Matchup </NavLink>
                 <NavLink to= "/stats" activeClassName="active"> Stats </NavLink>
                 <NavLink to= "/uploads" activeClassName="active"> Uploads </NavLink>
             </nav>

@@ -5,6 +5,34 @@ const router = new Router();
 //http://localhost:3000/hamsters
 
 
+//POST upload a new hamster
+router.post("/", async (req, res) => {
+    try {
+        let hamsters = [];
+        let snapShot = await db.collection("hamsters").get();
+
+        snapShot.forEach(doc => {
+            hamsters.push(doc.data());
+        })
+
+        await db.collection("hamsters").doc().set({
+            id: hamsters.length+1,
+            name: req.body.name,
+            age: req.body.age,
+            favFood: req.body.favFood,
+            loves: req.body.loves,
+            wins: 0,
+            defeats: 0,
+            games: 0
+        });
+
+        res.send({ msg: "Hamster uploaded" });
+    }
+    catch(err) {
+        res.status(500).send(err);
+    }
+
+})
 // GET a random hamster
 router.get('/random', async (req, res) => {
     let hamstersRandom = []
@@ -59,11 +87,12 @@ router.get('/:id', async (req, res) => {
 })
 
 
+
+
 // PUT update wins, defeats, games
 router.put('/:id/results', async (req, res) => {
     
     let id = parseInt(req.params.id); 
-    //write
     let hamsters = await db.collection('hamsters').where('id', '==', id).get()
     
     hamsters.forEach(hamster  => { 

@@ -14,10 +14,6 @@ const Upload = () => {
     const [foodTouched, setFoodTouched] = useState(false);
     const [lovesTouched, setLovesTouched] = useState(false);
 
-
-    const stopSubmit = event => {
-        event.preventDefault();
-    }
     
 
     let [nameClass, nameError] = nameTouched
@@ -37,10 +33,18 @@ const Upload = () => {
         : ['', ''];
 
 
+           
+    const clickHandler = (e)=>{
+        e.preventDefault()
+
+      
+        uploadHamster(name, age, food, loves)
+    }
+
         return (
             <div>
                 <h3>Please enter data to add a new hamster to the game!</h3>
-                <form onSubmit={stopSubmit}>
+                <form>
                 <div className= "form-group">
                     <label> Hamster Name </label>
                     <input type="text" placeholder="The hamsters name"
@@ -72,11 +76,11 @@ const Upload = () => {
                     <div className= "error"> {lovesError}</div>
 
                     <div>
-                        <button className="registerButton">Register a new hamster</button>
+                        <button onClick={e=>clickHandler(e)}>Register a new hamster</button>
                     </div>
 
                 </div>
-                <p className={name ? "" : "hide"}>{name} will be added to the battle!</p>
+       
                     </form>
 
             </div>
@@ -84,6 +88,9 @@ const Upload = () => {
     }
     //<div>If you click, "{name}", "{age}", "{food}" and "{loves}" will be added.</div>
 
+
+
+    ///Validation
     function isValidName(name) {
         if( String(name) !== '' ) {
             return ['valid', ''];
@@ -116,6 +123,38 @@ const Upload = () => {
             return ['valid', ''];
         } else {
             return ['invalid', 'Please enter the hamsters favourite activity']
+        }
+    }
+
+
+    //upload Hamster
+    const uploadHamster = async (name, age, food, loves)=>{
+
+        let body = {
+            name,
+            age,
+            food,
+            loves,
+            games : 0,
+            wins : 0,
+            defeats: 0,
+            id: Date.now()
+        }
+        console.log(body)
+    
+        try{
+    
+            let resp = await fetch('/api/hamsters', {
+                method: 'POST',
+                body: JSON.stringify(body)
+            })
+            let json = await resp.json();
+            console.log(json.msg);
+           
+    
+        }catch(err){
+            console.log(err);
+            return err;
         }
     }
 

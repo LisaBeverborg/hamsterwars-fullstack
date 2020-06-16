@@ -1,0 +1,13 @@
+
+
+.battle{
+  display: flex;
+  justify-content: center;
+}
+
+.contestant {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin:3em;
+  }
