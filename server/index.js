@@ -9,6 +9,13 @@
 
  // app.use(express.static(__dirname + 'assets'));
 
+ var bodyParser = require('body-parser');
+
+// configure the app to use bodyParser()
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
   
   //Routes
   const hamstersRoute = require('./routes/hamsters');

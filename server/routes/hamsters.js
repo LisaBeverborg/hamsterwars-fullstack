@@ -2,20 +2,19 @@ const { Router } = require('express');
 const { db } = require ('./../firebase');
 const router = new Router();
 
-//http://localhost:3000/hamsters
-
 
 //POST upload a new hamster
 router.post("/", async (req, res) => {
-    try {
+   try {
         let hamsters = [];
-        let snapShot = await db.collection("hamsters").get();
+        console.log(req.body);
+        let snapShot = await db.collection('hamsters').get();
 
         snapShot.forEach(doc => {
             hamsters.push(doc.data());
         })
 
-        await db.collection("hamsters").doc().set({
+        await db.collection('hamsters').doc().set({
             id: hamsters.length+1,
             name: req.body.name,
             age: req.body.age,
@@ -26,7 +25,7 @@ router.post("/", async (req, res) => {
             games: 0
         });
 
-        res.send({ msg: "Hamster uploaded" });
+        res.send({ msg: 'new hamster uploaded' });
     }
     catch(err) {
         res.status(500).send(err);
@@ -89,17 +88,16 @@ router.get('/:id', async (req, res) => {
 
 
 
-// PUT update wins, defeats, games
+// PUT update wins, defeats
 router.put('/:id/results', async (req, res) => {
     
     let id = parseInt(req.params.id); 
     let hamsters = await db.collection('hamsters').where('id', '==', id).get()
     
-    hamsters.forEach(hamster  => { 
-        
-        let data = hamster.data()
-        
-        db.collection('hamsters').doc(hamster.id).update({ wins:data.wins+req.body.wins,  defeats:data.defeats+req.body.defeats, games:data.games+req.body.games})
+    hamsters.forEach(hamster  => {       
+        let data = hamster.data()   
+        let hamsterUpdate = { wins:data.wins + parseInt(req.body.wins),  defeats:data.defeats+req.body.defeats, games:data.games+req.body.games };
+        db.collection('hamsters').doc(hamster.id).update(hamsterUpdate)
         .then(() => {res.send('Hamster updated.')})
     })
 })

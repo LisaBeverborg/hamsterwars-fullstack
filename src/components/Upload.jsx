@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import './Upload.css'; 
 
 
+
 const Upload = () => {
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
-    const [food, setFood] = useState('');
+    const [favFood, setFood] = useState('');
     const [loves, setLoves] = useState('');
+    const [uploadSuccess, setUploadSuccess] = useState('');
 
 
     const [nameTouched, setNameTouched] = useState(false);
@@ -25,20 +27,20 @@ const Upload = () => {
         : ['', ''];
 
     let [foodClass, foodError] = foodTouched
-        ? isValidFood(food)
+        ? isValidFood(favFood)
         : ['', ''];
 
     let [lovesClass, lovesError] = lovesTouched
         ? isValidLoves(loves)
         : ['', ''];
 
-
+        let formIsValid = nameTouched && ageTouched && foodTouched && lovesTouched && (nameError === '') && (ageError === '') && (foodError === '') && (lovesError === '')
            
     const clickHandler = (e)=>{
         e.preventDefault()
 
       
-        uploadHamster(name, age, food, loves)
+        uploadHamster(name, age, favFood, loves)
     }
 
         return (
@@ -76,9 +78,9 @@ const Upload = () => {
                     <div className= "error"> {lovesError}</div>
 
                     <div>
-                        <button onClick={e=>clickHandler(e)}>Register a new hamster</button>
+                        <button className="uploadButton" disabled ={!formIsValid} onClick={e=>clickHandler(e), () => setUploadSuccess(`Hamster ${name} was upload and can be used in battle`)}>Register a new hamster</button>
                     </div>
-
+                    <p className={uploadSuccess ? '' : 'hide' }>{uploadSuccess}</p>
                 </div>
        
                     </form>
@@ -109,8 +111,8 @@ const Upload = () => {
         }
     }
   
-    function isValidFood(food) {
-        if( String(food) !== '' ) {
+    function isValidFood(favFood) {
+        if( String(favFood) !== '' ) {
             return ['valid', ''];
         } else {
             return ['invalid', 'Please enter a favourite food']
@@ -128,28 +130,24 @@ const Upload = () => {
 
 
     //upload Hamster
-    const uploadHamster = async (name, age, food, loves)=>{
-
-        let body = {
-            name,
-            age,
-            food,
-            loves,
-            games : 0,
-            wins : 0,
-            defeats: 0,
-            id: Date.now()
-        }
-        console.log(body)
+    const uploadHamster = async (name, age, favFood, loves)=>{
+        let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'application/json');
+       
+            let data = JSON.stringify({'name': name,'age': age,'favFood': favFood,'loves': loves});
+      
+      
     
         try{
     
-            let resp = await fetch('/api/hamsters', {
+            let resp = await fetch('/api/hamsters/', {
                 method: 'POST',
-                body: JSON.stringify(body)
+                headers: myHeaders,
+                body: data
             })
             let json = await resp.json();
             console.log(json.msg);
+            
            
     
         }catch(err){

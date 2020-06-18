@@ -1,4 +1,9 @@
 
+.battle-title {
+  text-align: center;
+  
+}
+
 
 .battle{
   display: flex;
@@ -6,9 +11,36 @@
   justify-content: center;
 }
 
-.contestant {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin:3em;
-  }
+.hamster-info {
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;  
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2);
+  width: 30%;
+  border-radius: 10px;
+  background-color: #48D1CC; 
+}
+
+.hamster-info > img{
+  border: solid black;
+  width: 85%;
+  height: 60%;
+}
+
+.switchView{
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px 24px;
+  border: 1px solid #736767;
+  border-radius: 8px;
+  background: #dec7c7;
+  background: -webkit-gradient(linear, left top, left bottom, from(#dec7c7), to(#756969));
+  background: -moz-linear-gradient(top, #dec7c7, #756969);
+  background: linear-gradient(to bottom, #dec7c7, #756969);
+  font: normal normal bold 15px arial;
+  color: #ffffff;
+  text-decoration: none;
+}
