@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Switch, Route, Link, NavLink} from 'react-router-dom';
 import Start from './components/Start';
-import Battle from './components/Battle';
+import Battle from './components/Battle/Battle';
 import Matchup from './components/Matchup';
 import Stats from './components/Stats';
 import Upload from './components/Upload';

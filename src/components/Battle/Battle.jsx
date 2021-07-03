@@ -1,25 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import './Battle.css';
-import { NavLink, useHistory} from 'react-router-dom';
-
+import { NavLink} from 'react-router-dom';
+import MatchResult from "./MatchResult";
 
 
 function App() {
     const [hamster1, setHamster1] = useState(null);
     const [hamster2, setHamster2] = useState(null);
-    // const [newGame, setNewGame] =useState(false);
-    //const [winner, setWinner] = useState('');
+    const [newGame, setNewGame] =useState(false);
+    const [winner, setWinner] = useState('');
     
     
-    useEffect(()=>{
-        getRandomHamster(setHamster1);
-        getRandomHamster(setHamster2);
-      
-        
-    }, [])
+    useEffect(() => {
+
+            async function getRandomHamster() {  
+                let response = await fetch("/api/hamsters/random");
+                const randomHamsterOne = await response.json();
+
+                response = await fetch("/api/hamsters/random");
+                const randomHamsterTwo = await response.json();
+
+                if(randomHamsterOne.id === randomHamsterTwo.id) {
+                    console.log("FOUND SAME!")
+                    newGame ? setNewGame(false) : setNewGame(true);
+
+                }else {
+                    setHamster1(randomHamsterOne)
+                    setHamster2(randomHamsterTwo);
+                }
+            }
+            getRandomHamster();
     
-  
-    
+
+    }, [newGame])
+
+    const handleClick = async (winner, looser) => {
+        console.log(winner.id);
+        console.log(looser.id);
+        setWinner(winner);
+        newGame ? setNewGame(false) : setNewGame(true);
+        await updateWinner(winner.id);
+        await updateLoser(looser.id);
+        await updateGame(winner.id, looser.id);
+    }
     
     return (
         <div>
@@ -47,13 +70,13 @@ function App() {
             </>
             : 'no data'} 
             </section>
-
+            {winner !== "" ? <MatchResult winner={winner}/> : ""}
             </div>
             <NavLink to= "/matchup" activeClassName="active" className="switchView"> Matchup </NavLink>
             </div>
             )     
         }
-        //<p>Winner of this battle is: </p>
+     
         
 
 
@@ -71,37 +94,12 @@ function App() {
             }
         }
         
-        
-//Get specific hamster
-        
-        //const getHamsterId = async(setState)=>{
-        
-        //try{
-        //      const resp = await fetch('/api/hamsters/:id');
-        //  const json = await resp.json();
-        // setState(json);     
-        //}catch(e){
-        //  console.log('Fetch failed because', e );
-        // return null;
-        //}
-        //}
+    
+
         
     
         
 // Update winner, loser and game result  
-        function handleClick(winner, loser, ) {
-            console.log(winner.id);
-            console.log(loser.id);
-            //setWinner(winner);
-            //newGame ? setNewGame(false) : setNewGame(true);
-            updateWinner(winner.id);
-            updateLoser(loser.id)
-            updateGame(winner.id, loser.id);
-            //history.push({
-           // pathname: `/matchup/${winner.id}/${loser.id}/`,
-           // state: { winner: winner, loser: loser },
-       // })
-        }
         
         function updateWinner(id) {
             let myHeaders = new Headers();
