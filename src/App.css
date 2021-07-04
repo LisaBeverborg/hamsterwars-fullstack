@@ -1,5 +1,8 @@
 .App{
   font-family: 'Roboto';
+  width: 80vw;
+  height: 100vh;
+  margin: auto;
 }
 
 .App-header {
