@@ -6,6 +6,7 @@ import Battle from './components/Battle/Battle';
 import Matchup from './components/Matchup';
 import Stats from './components/Stats';
 import Upload from './components/Upload';
+import Catalogue from './components/Catalogue';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <h3>The newest and craziest hamsterwarsgame</h3>
             <nav>
                 <Link to= "/start" activeClassName="active"> Start </Link>
+                <NavLink to= "/catalogue" activeClassName="active"> Catalogue </NavLink>
                 <NavLink to= "/battle" activeClassName="active"> Battle </NavLink>
                 <NavLink to= "/stats" activeClassName="active"> Stats </NavLink>
                 <NavLink to= "/uploads" activeClassName="active"> Uploads </NavLink>
@@ -25,8 +27,8 @@ function App() {
 
         <main className="App-main">
           <Switch>
-           
-            <Route path="/battle">  <Battle/>  </Route>
+            <Route path="/catalogue"><Catalogue/></Route>
+            <Route path="/battle">  <Battle/>   </Route>
             <Route path="/matchup"> <Matchup/>  </Route>
             <Route path="/stats">   <Stats/>    </Route>
             <Route path="/uploads"> <Upload/>   </Route>
