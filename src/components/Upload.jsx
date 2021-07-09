@@ -8,6 +8,7 @@ const Upload = () => {
     const [age, setAge] = useState('');
     const [favFood, setFood] = useState('');
     const [loves, setLoves] = useState('');
+    const [image, setImage] = useState('');
     const [uploadSuccess, setUploadSuccess] = useState('');
 
 
@@ -40,7 +41,7 @@ const Upload = () => {
         e.preventDefault()
 
       
-        uploadHamster(name, age, favFood, loves)
+        uploadHamster(name, age, favFood, loves, image)
     }
 
         return (
@@ -77,6 +78,12 @@ const Upload = () => {
                         onBlur={() => setLovesTouched(true)} />
                     <div className= "error"> {lovesError}</div>
 
+                    <section className="form-group">
+                    <label>Image</label>
+                    <input value={image} type="text" 
+                        onChange={event => setImage(event.target.value)} 
+                        placeholder="Enter image name"></input>
+                </section>
                     <div>
                         <button className="uploadButton" disabled ={!formIsValid} onClick={e=>clickHandler(e), () => setUploadSuccess(`Hamster ${name} was upload and can be used in battle`)}>Register a new hamster</button>
                     </div>
@@ -130,11 +137,11 @@ const Upload = () => {
 
 
     //upload Hamster
-    const uploadHamster = async (name, age, favFood, loves)=>{
+    const uploadHamster = async (name, age, favFood, loves, image)=>{
         let myHeaders = new Headers();
             myHeaders.append('Content-Type', 'application/json');
        
-            let data = JSON.stringify({'name': name,'age': age,'favFood': favFood,'loves': loves});
+            let data = JSON.stringify({'name': name,'age': age,'favFood': favFood,'loves': loves, 'imgName': image});
       
       
     
