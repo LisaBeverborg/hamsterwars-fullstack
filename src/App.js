@@ -7,18 +7,20 @@ import Matchup from './components/Matchup';
 import Stats from './components/Stats';
 import Upload from './components/Upload';
 import Catalogue from './components/Catalogue';
-
+import headerImg from './assets/hamster-header.png';
 
 function App() {
   return (
     <Router>
     <div className="App">
         <header className="App-header"> 
+        
+            <img src={headerImg} alt="Hamster header"/>
             <h1>HAMSTERWARS</h1>
-            <h3>The newest and craziest hamsterwarsgame</h3>
+            <h3>The newest and craziest hamsterwarsgame.</h3>
             <nav>
                 <Link to= "/start" activeClassName="active"> Start </Link>
-                <NavLink to= "/catalogue" activeClassName="active"> Catalogue </NavLink>
+                <NavLink to= "/catalogue" activeClassName="active"> Gallery </NavLink>
                 <NavLink to= "/battle" activeClassName="active"> Battle </NavLink>
                 <NavLink to= "/stats" activeClassName="active"> Stats </NavLink>
                 <NavLink to= "/uploads" activeClassName="active"> Uploads </NavLink>

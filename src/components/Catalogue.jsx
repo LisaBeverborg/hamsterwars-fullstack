@@ -35,7 +35,6 @@ const StyledImg= styled.img`
     border-radius: 5px;
 `
 const StyledGrid= styled.section`
-    font-family: 'Raleway', sans-serif;
         @media (min-width: 600px){
         display: grid;
         grid-gap: 1.5em;

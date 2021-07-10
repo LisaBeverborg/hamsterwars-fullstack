@@ -1,3 +1,15 @@
+
+/*colors
+#F18e22 ≈ Carrot Orange
+#F2d7c4 ≈ Albescent White
+#Ab766b ≈ Coral Tree
+#A79994 ≈ Zorba
+#706464 ≈ Scorpion
+#Ffc097 ≈ Peach Orange
+*/
+
+
+
 .App{
   font-family: 'Roboto';
   width: 80vw;
@@ -6,17 +18,16 @@
 }
 
 .App-header {
-  background-color: #8abaae;
+  background-color: #F2d7c4;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 /*---------------------Navigation---------------------*/
 header nav {
-  background-color: #207567;
+  background-color: #A79994;
   display: flex;
   flex-direction: row;
 }
@@ -24,16 +35,16 @@ header nav a {
   text-decoration: none;
   color: black ;
   padding: 0.4em 2em;
-  border:  1px solid gray;
+  border:  1px solid #706464;
   flex: 1 1 auto;
 
 }
 header nav a:hover {
-  background-color: gray;
+  background-color: #706464;
 }
 
 header nav a.active {
-  background-color: white;
+  background-color: #Ab766b;
   border-bottom: none;
 }
 
@@ -41,16 +52,14 @@ header nav a.active {
 
 main {
   padding: 1em;
-  background-color: #2e8563;
-  color: white;
+  background-color: #Ab766b;
   width: auto;
   height: auto;
 
 }
 
 footer {
-  background-color: #5ca08e;
+  background-color: #F2d7c4;
   text-align: center;
-  color: white;
   padding: 1em;
 }
