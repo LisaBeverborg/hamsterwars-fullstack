@@ -52,7 +52,7 @@ function App() {
         {hamster1
             ?<>
             <h2>{hamster1.name}</h2>
-            <button onClick={() => handleClick(hamster1, hamster2)}>Choose this hamster</button>  
+            <button className="switchView" onClick={() => handleClick(hamster1, hamster2)}>Choose this hamster</button>  
             <br/>
             <img src={`assets/${hamster1.imgName}`} alt={hamster1.imgName}/>
             </>
@@ -64,7 +64,7 @@ function App() {
         {hamster2
             ?<>
             <h2>{hamster2.name}</h2>
-            <button onClick={() => handleClick(hamster2, hamster1)}>Choose this hamster</button>
+            <button className="switchView" onClick={() => handleClick(hamster2, hamster1)}>Choose this hamster</button>
             <br/>
             <img src={`/assets/${hamster2.imgName}`} alt={hamster2.imgName}/>
             </>

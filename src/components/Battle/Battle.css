@@ -4,7 +4,6 @@
   
 }
 
-
 .battle{
   display: flex;
   flex-direction: row;
@@ -20,11 +19,11 @@
   box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2);
   width: 30%;
   border-radius: 10px;
-  background-color: #48D1CC; 
+  background-color: #F2d7c4; 
 }
 
 .hamster-info > img{
-  border: solid black;
+  border-radius: 10px;
   width: 85%;
   height: 60%;
 }
@@ -41,6 +40,5 @@
   background: -moz-linear-gradient(top, #dec7c7, #756969);
   background: linear-gradient(to bottom, #dec7c7, #756969);
   font: normal normal bold 15px arial;
-  color: #ffffff;
   text-decoration: none;
 }
