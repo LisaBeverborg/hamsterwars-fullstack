@@ -1,0 +1,86 @@
+.gallery-title {
+    text-align: center;   
+  }
+
+.hamster-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.imagebox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 3rem 1rem;
+    border: 6px solid #fdfbfb;
+    border-radius: 5px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    background-color:#F2d7c4;
+}
+
+.imagebox img {
+    width: 30rem;
+    height: 20rem;
+    object-fit: cover;
+}
+
+.infobox {
+    width: 30rem;
+    display: block;
+    margin: 0rem auto;
+    padding: 1rem;
+    text-align: center;
+ 
+}
+.infobox h4 {
+    font-size: 14px;
+    font-weight: 400;
+    width: 6rem;
+    margin: auto;
+    position: relative;
+    top: 2.6rem;
+    left: -3rem;
+    background-color: #706464;
+    border: 1px solid #706464;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.infobox ul {
+    width: 50%;
+    margin: 2rem auto;
+    padding: 1.5rem 1rem 1rem 1rem;
+    border: 1px solid #706464;
+    border-radius: 5px;
+    transition: all 0.5s;
+    list-style-type: none;
+}
+
+.infobox ul:hover {
+    background-color: #706464;
+}
+
+.infobox li {
+    font-size: 14px;
+    padding: 0.2rem;
+    cursor: default;
+}
+
+.hamster-left, 
+.hamster-right {
+    background-color: #ebedee;
+    border: 1px solid #ebedee;
+    border-radius: 80px;
+    fill: #fff;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    height: 3.2rem;
+    width: 3.2rem;
+    padding: 0.5rem;
+    margin: 2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}

@@ -1,19 +1,23 @@
-import React from 'react';
-import leftArrow from '../assets/left-arrow.png'
-import rightArrow from '../assets/right-arrow.png';
-
+import React, { useState, useEffect } from 'react';
+import './Gallery.css';
+import { FaArrowLeft } from 'react-icons/fa'
+import { FaArrowRight } from 'react-icons/fa'
 
 const Gallery = () => {
- 
+
+   
+    
 
     return (
         <section>
-            <h2>Gallery</h2> 
-                <section>
-                <button><img src={leftArrow} alt="arrow left"/></button>
-                    <div >
+            <h2 className="gallery-title">Gallery</h2>
+            
+                <section className="hamster-card">
+
+                <FaArrowLeft  className="hamster-left"/>
+                    <div className="imagebox">
                     <img src="https://via.placeholder.com/150" alt="hamster" />
-                        <div >
+                        <div className="infobox">
                             <h3>Name</h3>
 
                             <p>age years</p>
@@ -28,7 +32,7 @@ const Gallery = () => {
                             </ul>
                         </div>
                     </div>
-                    <button><img src={rightArrow}  alt="arrow right"/></button>
+                    <FaArrowRight  className="hamster-right"/>
                 </section>
             
         </section>
